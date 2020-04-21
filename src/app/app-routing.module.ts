@@ -4,7 +4,8 @@ import {MainLayoutComponent} from './shared/components/main-layout/main-layout.c
 
 
 const routes: Routes = [
-  {path: '', component: MainLayoutComponent}
+  {path: '', component: MainLayoutComponent},
+  {path: 'training', loadChildren: './training/training.module#TrainingModule'}
 ];
 
 @NgModule({
