@@ -1,0 +1,30 @@
+<div class="container p-0">
+  <div class="row text-center width_hundred_percent_marg_zero">
+    <div class="col-md-12">
+      <ul class="breadcrumb">
+        <li><a href="/">Главная</a></li>
+        <li><a [routerLink]="['/training']">Обучение</a></li>
+        <li class="active">Категории</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row text-center width_hundred_percent_marg_zero">
+    <div *ngFor="let category of categories" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-2">
+      <div class="category-card-container">
+        <a href="/category/{{'category.id'}}">
+          <div class="cover text-center">
+            <img src="{{'imageUrl'}}{{'category.image.id'}}" alt="photo"/>
+          </div>
+          <div class="content">
+            <div class="text-center">
+              <h5>{{ category.name }}</h5>
+            </div>
+            <div style="padding: 2px" class="text-center">
+              <h5>{{ category.count }}</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
