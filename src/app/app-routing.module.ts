@@ -5,7 +5,7 @@ import {MainLayoutComponent} from './shared/components/main-layout/main-layout.c
 
 const routes: Routes = [
   {path: '', component: MainLayoutComponent},
-  {path: 'training', loadChildren: './training/training.module#TrainingModule'}
+  {path: 'training', loadChildren: () => import('./training/training.module').then(m => m.TrainingModule)}
 ];
 
 @NgModule({
