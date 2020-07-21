@@ -1,0 +1,45 @@
+<div id="categories">
+  <div class="logo">
+    <span class="nav-title">
+      Categories
+    </span>
+    <span class="add-icon-area">
+      <button mat-icon-button class="add-icon" (click)="openAddCategoryDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </span>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item pointer" (click)="showTasksByCategory(null)"
+          [class.active]="selectedCategory === null">
+        <a class="nav-link pointer">
+          <span class="all-category-title">Все</span>
+          <span class="uncompleted-count">{{uncompletedTotal}}</span>
+        </a>
+      </li>
+      <li class="line"></li>
+      <li *ngIf="categories ? categories.length === 0 : 0">
+        <p class="not-found">Not found...</p>
+      </li>
+      <li class="nav-item pointer" *ngFor="let category of categories; let index = index"
+          (click)="showTasksByCategory(category)"
+          [class.active]="category === selectedCategory"
+          (mouseleave)="showEditIcon(null)"
+          (mouseenter)="showEditIcon(index)">
+        <a class="nav-link">
+          <span class="category-title">{{category.title}}</span>
+          <span class="edit-category-icon-area">
+              <mat-icon class="edit-category-icon" *ngIf="indexMouseMove === index"
+                        (click)="$event.stopPropagation();  openEditCategoryDialog(category)">
+                edit
+              </mat-icon>
+            </span>
+          <span class="uncompleted-count">{{category.uncompletedCount}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar-background"></div>
+</div>
+

@@ -1,3 +1,46 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<ng-sidebar-container style="height: 100vh">
+  <ng-sidebar
+    (onClosed)="onClosedMenu()"
+
+    [opened]="menuOpened"
+    [closeOnClickOutside]="false"
+    [closeOnClickBackdrop]="true"
+    [showBackdrop]="showBackdrop"
+    [mode]="menuMode"
+    [animate]="true"
+    [position]="menuPosition"
+    [autoFocus]="false">
+    <div class="sidebar"
+         data-color="purple"
+         data-step="1"
+         data-intro="Фильтрация задач, добавление/удаление/редактирование категорий"
+         data-position='right'>
+      <app-categories
+        (selectCategory)="onSelectCategory($event)"
+        (deleteCategory)="onDeleteCategory($event)"
+        (updateCategory)="onUpdateCategory($event)"
+        (addCategory)="onAddCategory($event)"
+        (searchCategory)="onSearchCategoryByTitle($event)"
+
+        [selectedCategory]="selectedCategory"
+        [categories]="categories">
+      </app-categories>
+    </div>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <div class="main-panel">
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <app-header
+          (toggleMenu)="toggleMenu()"
+
+          [categoryName]="selectedCategory ? selectedCategory.title : 'Все'">
+        </app-header>
+      </nav>
+      <div class="content">
+        <div class="container-fluid text-center">
+          <h1>HELLO</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-sidebar-container>
