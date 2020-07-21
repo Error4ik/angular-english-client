@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  selectedCategory: any;
+  selectedCategory = null;
   menuOpened: boolean;
   menuMode: string;
   menuPosition: string;
@@ -26,6 +26,10 @@ export class AppComponent implements OnInit {
     this.menuOpened = true;
     this.menuMode = 'push';
     this.showBackdrop = false;
+  }
+
+  toggleMenu() {
+    this.menuOpened = !this.menuOpened;
   }
 
   onClosedMenu() {

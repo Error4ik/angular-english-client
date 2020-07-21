@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {CategoriesComponent} from './view/categories/categories.component';
+import {HeaderComponent} from './view/header/header.component';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
@@ -14,7 +15,8 @@ import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
