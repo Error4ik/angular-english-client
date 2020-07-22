@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Category} from '../../domain/Category';
 
 @Component({
   selector: 'app-categories',
@@ -7,19 +8,19 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
   @Input()
-  categories: any[];
+  categories: Category[];
   @Input()
-  selectedCategory: any;
+  selectedCategory: Category;
   @Input()
-  uncompletedTotal: number;
+  totalWords: number;
   @Output()
-  selectCategory = new EventEmitter<any>();
+  selectCategory = new EventEmitter<Category>();
   @Output()
-  deleteCategory = new EventEmitter<any>();
+  deleteCategory = new EventEmitter<Category>();
   @Output()
-  updateCategory = new EventEmitter<any>();
+  updateCategory = new EventEmitter<Category>();
   @Output()
-  addCategory = new EventEmitter<any>();
+  addCategory = new EventEmitter<Category>();
   @Output()
   searchCategory = new EventEmitter<string>();
 
@@ -31,7 +32,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
   }
 
-  showTasksByCategory(category: any) {
+  showTasksByCategory(category: Category) {
     if (this.selectedCategory === category) {
       return;
     }
@@ -48,7 +49,7 @@ export class CategoriesComponent implements OnInit {
     console.log('addCategoryDialog');
   }
 
-  openEditCategoryDialog(category: any) {
+  openEditCategoryDialog(category: Category) {
     console.log('openEditCategoryDialog');
   }
 }

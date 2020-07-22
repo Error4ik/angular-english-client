@@ -10,7 +10,7 @@
     [animate]="true"
     [position]="menuPosition"
     [autoFocus]="false">
-    <div class="sidebar">
+    <div class="sidebar" data-color="purple">
       <app-categories
         (selectCategory)="onSelectCategory($event)"
         (deleteCategory)="onDeleteCategory($event)"
@@ -18,7 +18,7 @@
         (addCategory)="onAddCategory($event)"
         (searchCategory)="onSearchCategoryByTitle($event)"
 
-        [uncompletedTotal]="totalWords"
+        [totalWords]="totalWords"
         [selectedCategory]="selectedCategory"
         [categories]="categories">
       </app-categories>

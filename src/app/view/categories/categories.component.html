@@ -15,7 +15,7 @@
           [class.active]="selectedCategory === null">
         <a class="nav-link pointer">
           <span class="all-category-title">Все</span>
-          <span class="uncompleted-count">{{uncompletedTotal}}</span>
+          <span class="total-words">{{totalWords}}</span>
         </a>
       </li>
       <li class="line"></li>
@@ -35,7 +35,7 @@
                 edit
               </mat-icon>
             </span>
-          <span class="uncompleted-count">{{category.uncompletedCount}}</span>
+          <span class="total-words">{{category.numberOfWords}}</span>
         </a>
       </li>
     </ul>

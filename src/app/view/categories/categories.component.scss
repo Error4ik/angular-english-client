@@ -33,7 +33,6 @@
   width: 85%;
   display: inline-block;
   font-size: 16px;
-  /*font-weight: bold;*/
 }
 
 .category-height {
@@ -59,11 +58,7 @@
   vertical-align: middle;
 }
 
-//.sidebar-background {
-//  background-image: url("../../../assets/img/sidebar-1.jpg") !important;
-//}
-
-.uncompleted-count {
+.total-words {
   background-color: #eaeaea;
   border-radius: 3px;
   padding: 5px;
@@ -88,7 +83,3 @@
 .sidebar-wrapper .mat-form-field {
   padding-bottom: 0;
 }
-
-//.active {
-//  background-color: #0a6ebd;
-//}
