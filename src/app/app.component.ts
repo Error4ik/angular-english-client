@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Category} from './domain/Category';
+import {CategoryService} from './dao/impl/CategoryService';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,10 @@ export class AppComponent implements OnInit {
   menuMode: string;
   menuPosition: string;
   showBackdrop: boolean;
-  categories: any[];
+  categories: Category[];
+  totalWords: number;
 
-  constructor() {
+  constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
@@ -57,45 +60,12 @@ export class AppComponent implements OnInit {
   }
 
   updateCategories() {
-    const cat = [
-      {
-        id: 1,
-        title: 'First',
-        completedCount: 5,
-        uncompletedCount: 3
-      },
-      {
-        id: 2,
-        title: 'Second',
-        completedCount: 1,
-        uncompletedCount: 2
-      },
-      {
-        id: 3,
-        title: 'Third',
-        completedCount: 9,
-        uncompletedCount: 0
-      },
-      {
-        id: 4,
-        title: 'Fourth',
-        completedCount: 4,
-        uncompletedCount: 11
-      },
-      {
-        id: 5,
-        title: 'Fifth',
-        completedCount: 1,
-        uncompletedCount: 7
-      },
-      {
-        id: 6,
-        title: 'Sixth',
-        completedCount: 7,
-        uncompletedCount: 2
-      },
-    ];
-
-    this.categories = cat;
+    this.categoryService.findAll().subscribe(categories => {
+      this.totalWords = 0;
+      this.categories = categories;
+      this.categories.forEach(cat => {
+        this.totalWords += cat.numberOfWords;
+      });
+    });
   };
 }

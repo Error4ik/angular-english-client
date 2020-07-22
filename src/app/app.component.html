@@ -10,11 +10,7 @@
     [animate]="true"
     [position]="menuPosition"
     [autoFocus]="false">
-    <div class="sidebar"
-         data-color="purple"
-         data-step="1"
-         data-intro="Фильтрация задач, добавление/удаление/редактирование категорий"
-         data-position='right'>
+    <div class="sidebar">
       <app-categories
         (selectCategory)="onSelectCategory($event)"
         (deleteCategory)="onDeleteCategory($event)"
@@ -22,6 +18,7 @@
         (addCategory)="onAddCategory($event)"
         (searchCategory)="onSearchCategoryByTitle($event)"
 
+        [uncompletedTotal]="totalWords"
         [selectedCategory]="selectedCategory"
         [categories]="categories">
       </app-categories>

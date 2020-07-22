@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {CategoryService} from './dao/impl/CategoryService';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
