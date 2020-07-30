@@ -5,4 +5,5 @@ export class Word {
   translation: string;
   phrase: string;
   translatePhrase: string;
+  field: number;
 }
