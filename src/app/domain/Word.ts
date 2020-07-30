@@ -3,4 +3,5 @@ export class Word {
   word: string;
   transcription: string;
   translation: string;
+  phrase: string;
 }
