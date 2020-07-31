@@ -12,12 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {CategoryService} from './dao/impl/CategoryService';
+import { CardsComponent } from './view/cards/cards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
