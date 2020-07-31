@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from './domain/Category';
 import {CategoryService} from './dao/impl/CategoryService';
+import {Card} from './domain/Card';
+import {CardService} from './dao/impl/CardService';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +17,15 @@ export class AppComponent implements OnInit {
   showBackdrop: boolean;
   categories: Category[];
   totalWords: number;
+  cards: Card[];
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private cardService: CardService) {
   }
 
   ngOnInit(): void {
     this.setMenuValue();
     this.updateCategories();
+    this.updateCards();
   }
 
   setMenuValue() {
@@ -68,4 +72,8 @@ export class AppComponent implements OnInit {
       });
     });
   };
+
+  updateCards() {
+    this.cardService.findAll().subscribe(cards => this.cards = cards);
+  }
 }

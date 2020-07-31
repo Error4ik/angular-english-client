@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {CategoryService} from './dao/impl/CategoryService';
 import { CardsComponent } from './view/cards/cards.component';
+import {CardService} from './dao/impl/CardService';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CardsComponent } from './view/cards/cards.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService, CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
