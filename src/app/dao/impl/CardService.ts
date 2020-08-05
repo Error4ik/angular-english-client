@@ -2,6 +2,7 @@ import {CardDao} from '../interface/CardDao';
 import {Card} from '../../domain/Card';
 import {Observable, of} from 'rxjs';
 import {TestData} from '../TestData';
+import {Category} from '../../domain/Category';
 
 export class CardService implements CardDao {
 
@@ -25,4 +26,10 @@ export class CardService implements CardDao {
     return undefined;
   }
 
+  findCardByCategory(selectedCategory: Category): Observable<Card[]> {
+    if (selectedCategory) {
+      return of(TestData.cards.filter(card => card.category === selectedCategory));
+    }
+    return this.findAll();
+  }
 }

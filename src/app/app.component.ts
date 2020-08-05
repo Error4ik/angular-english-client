@@ -43,8 +43,9 @@ export class AppComponent implements OnInit {
     this.menuOpened = false;
   }
 
-  onSelectCategory(value: any) {
-    console.log('onSelectCategory', value);
+  onSelectCategory(category: Category) {
+    this.selectedCategory = category;
+    this.updateCards();
   }
 
   onDeleteCategory(value: any) {
@@ -74,6 +75,6 @@ export class AppComponent implements OnInit {
   };
 
   updateCards() {
-    this.cardService.findAll().subscribe(cards => this.cards = cards);
+    this.cardService.findCardByCategory(this.selectedCategory).subscribe(cards => this.cards = cards);
   }
 }
