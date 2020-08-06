@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Category} from '../../domain/Category';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogAction, DialogResult} from '../DialogResult';
+import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-edit-category-dialog',
@@ -17,12 +18,13 @@ export class EditCategoryDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EditCategoryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: [Category, string]) {
+    @Inject(MAT_DIALOG_DATA) private data: {category: Category, title: string},
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.category = this.data[0];
-    this.dialogTitle = this.data[1];
+    this.category = this.data.category;
+    this.dialogTitle = this.data.title;
     this.tmpTitle = this.category.title;
     if (this.category.id) {
       this.canDelete = true;
@@ -43,6 +45,13 @@ export class EditCategoryDialogComponent implements OnInit {
   }
 
   onDelete() {
-    console.log('Delete Category! in category dialog component.');
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        dialogTitle: 'Confirm the action.',
+        message: `Are you sure that you want to delete an category? ${this.category.title}`
+      },
+      maxWidth: '300px',
+      autoFocus: false
+    });
   }
 }

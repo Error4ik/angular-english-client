@@ -49,10 +49,13 @@ export class CategoriesComponent implements OnInit {
   }
 
   openAddCategoryDialog() {
-    const category = new Category(null, '');
-    category.numberOfWords = 0;
+    const newCat = new Category(null, '');
+    newCat.numberOfWords = 0;
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
-      data: [category, 'Create category'],
+      data: {
+        category: newCat,
+        title: 'Create category'
+      },
       width: '250px', autoFocus: false
     });
 
@@ -66,9 +69,12 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  openEditCategoryDialog(category: Category) {
+  openEditCategoryDialog(editCat: Category) {
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
-      data: [category, 'Edit category'],
+      data: {
+        category: editCat,
+        title: 'Edit category'
+      },
       width: '300px', autoFocus: false
     });
 
