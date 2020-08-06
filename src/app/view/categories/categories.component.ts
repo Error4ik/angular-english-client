@@ -49,19 +49,33 @@ export class CategoriesComponent implements OnInit {
   }
 
   openAddCategoryDialog() {
-    console.log('addCategoryDialog');
+    const category = new Category(null, '');
+    category.numberOfWords = 0;
+    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+      data: [category, 'Create category'],
+      width: '250px', autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        return;
+      }
+      if (result.action === DialogAction.SAVE) {
+        this.addCategory.emit(result.object);
+      }
+    });
   }
 
   openEditCategoryDialog(category: Category) {
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
       data: [category, 'Edit category'],
-      maxWidth: '400px', autoFocus: false
+      width: '300px', autoFocus: false
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (!result) {
         return;
-      } else if (result.action === DialogAction.EDIT) {
+      } else if (result.action === DialogAction.SAVE) {
         this.updateCategory.emit(result.object);
       }
     });

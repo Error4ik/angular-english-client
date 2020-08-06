@@ -54,10 +54,12 @@ export class AppComponent implements OnInit {
 
   onUpdateCategory(category: Category) {
     this.categoryService.update(category);
+    this.updateCategories();
   }
 
-  onAddCategory(value: any) {
-    console.log('onAddCategory', value);
+  onAddCategory(category: Category) {
+    this.categoryService.add(category);
+    this.updateCategories();
   }
 
   onSearchCategoryByTitle(value: string) {

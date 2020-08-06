@@ -2,7 +2,6 @@ export class DialogResult {
   action: DialogAction;
   object: any;
 
-
   constructor(action: DialogAction, object?: any) {
     this.action = action;
     this.object = object;
@@ -11,7 +10,7 @@ export class DialogResult {
 
 export enum DialogAction {
   CREATE,
-  EDIT,
+  SAVE,
   DELETE,
   CANCEL
 }

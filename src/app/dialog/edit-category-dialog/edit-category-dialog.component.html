@@ -13,15 +13,26 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <div class="col-md-9 col-12 text-center">
-    <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="inputTitle.value.trim().length == 0">
-      Save
-    </button>
-    <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+  <div *ngIf="!canDelete; else EditCategory">
+    <div class="col-12 text-center">
+      <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="inputTitle.value.trim().length == 0">
+        Save
+      </button>
+      <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+    </div>
   </div>
-  <div class="col-md-3 col-12 text-center" *ngIf="isCanShow()">
-    <button mat-icon-button (click)="onDelete()" class="delete-icon">
-      <mat-icon aria-hidden="false">delete</mat-icon>
-    </button>
-  </div>
+
+  <ng-template #EditCategory>
+    <div class="col-md-9 col-12 text-center">
+      <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="inputTitle.value.trim().length == 0">
+        Save
+      </button>
+      <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+    </div>
+    <div class="col-md-3 col-12 text-center" *ngIf="isCanShow()">
+      <button mat-icon-button (click)="onDelete()" class="delete-icon">
+        <mat-icon aria-hidden="false">delete</mat-icon>
+      </button>
+    </div>
+  </ng-template>
 </mat-dialog-actions>

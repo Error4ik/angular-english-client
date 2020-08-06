@@ -30,10 +30,8 @@ export class EditCategoryDialogComponent implements OnInit {
   }
 
   onConfirm(): void {
-    console.log(this.category);
     this.category.title = this.tmpTitle;
-    console.log(this.category);
-    this.dialogRef.close(new DialogResult(DialogAction.EDIT, this.category));
+    this.dialogRef.close(new DialogResult(DialogAction.SAVE, this.category));
   }
 
   onCancel(): void {
