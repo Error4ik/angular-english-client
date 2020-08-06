@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from '../../domain/Category';
 import {MatDialog} from '@angular/material/dialog';
 import {EditCategoryDialogComponent} from '../../dialog/edit-category-dialog/edit-category-dialog.component';
-import {DialogAction, DialogResult} from '../../dialog/DialogResult';
+import {DialogAction} from '../../dialog/DialogResult';
 
 @Component({
   selector: 'app-categories',
@@ -83,6 +83,8 @@ export class CategoriesComponent implements OnInit {
         return;
       } else if (result.action === DialogAction.SAVE) {
         this.updateCategory.emit(result.object);
+      } else if (result.action === DialogAction.DELETE) {
+        this.deleteCategory.emit(editCat);
       }
     });
   }

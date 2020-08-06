@@ -12,5 +12,6 @@ export enum DialogAction {
   CREATE,
   SAVE,
   DELETE,
+  OK,
   CANCEL
 }

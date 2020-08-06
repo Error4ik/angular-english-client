@@ -18,7 +18,7 @@ export class EditCategoryDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EditCategoryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: {category: Category, title: string},
+    @Inject(MAT_DIALOG_DATA) private data: { category: Category, title: string },
     private dialog: MatDialog) {
   }
 
@@ -52,6 +52,14 @@ export class EditCategoryDialogComponent implements OnInit {
       },
       maxWidth: '300px',
       autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      } else if (result.action === DialogAction.OK) {
+        this.dialogRef.close(new DialogResult(DialogAction.DELETE));
+      }
     });
   }
 }

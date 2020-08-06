@@ -48,8 +48,9 @@ export class AppComponent implements OnInit {
     this.updateCards();
   }
 
-  onDeleteCategory(value: any) {
-    console.log('onDeleteCategory', value);
+  onDeleteCategory(category: Category) {
+    this.categoryService.delete(category.id);
+    this.updateCategories();
   }
 
   onUpdateCategory(category: Category) {
