@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from '../../domain/Category';
+import {MatDialog} from '@angular/material/dialog';
+import {EditCategoryDialogComponent} from '../../dialog/edit-category-dialog/edit-category-dialog.component';
+import {DialogAction, DialogResult} from '../../dialog/DialogResult';
 
 @Component({
   selector: 'app-categories',
@@ -26,7 +29,7 @@ export class CategoriesComponent implements OnInit {
 
   indexMouseMove: number;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -50,6 +53,17 @@ export class CategoriesComponent implements OnInit {
   }
 
   openEditCategoryDialog(category: Category) {
-    console.log('openEditCategoryDialog');
+    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+      data: [category, 'Edit category'],
+      maxWidth: '400px', autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      } else if (result.action === DialogAction.EDIT) {
+        this.updateCategory.emit(result.object);
+      }
+    });
   }
 }

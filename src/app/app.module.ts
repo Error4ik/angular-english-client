@@ -14,13 +14,16 @@ import {MatInputModule} from '@angular/material/input';
 import {CategoryService} from './dao/impl/CategoryService';
 import { CardsComponent } from './view/cards/cards.component';
 import {CardService} from './dao/impl/CardService';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditCategoryDialogComponent } from './dialog/edit-category-dialog/edit-category-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     HeaderComponent,
-    CardsComponent
+    CardsComponent,
+    EditCategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +34,11 @@ import {CardService} from './dao/impl/CardService';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [CategoryService, CardService],
+  entryComponents: [EditCategoryDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

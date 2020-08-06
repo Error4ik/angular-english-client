@@ -19,7 +19,7 @@ export class CategoryService implements CategoryDAO {
   }
 
   delete(id: string): Observable<Category> {
-    const tmpCategory = TestData.categories.find(t => t.id === id);
+    const tmpCategory = TestData.categories.find(c => c.id === id);
     TestData.categories.splice(TestData.categories.indexOf(tmpCategory), 1);
     return of(tmpCategory);
   }
@@ -33,7 +33,7 @@ export class CategoryService implements CategoryDAO {
   }
 
   update(category: Category): Observable<Category> {
-    const tmpCategory = TestData.categories.find(t => t.id === category.id);
+    const tmpCategory = TestData.categories.find(c => c.id === category.id);
     TestData.categories.splice(TestData.categories.indexOf(tmpCategory), 1, category);
     return of(tmpCategory);
   }

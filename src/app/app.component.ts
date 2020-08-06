@@ -52,8 +52,8 @@ export class AppComponent implements OnInit {
     console.log('onDeleteCategory', value);
   }
 
-  onUpdateCategory(value: any) {
-    console.log('onUpdateCategory', value);
+  onUpdateCategory(category: Category) {
+    this.categoryService.update(category);
   }
 
   onAddCategory(value: any) {
