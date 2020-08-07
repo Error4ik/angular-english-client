@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from '../../domain/Category';
 import {MatDialog} from '@angular/material/dialog';
-import {EditCategoryDialogComponent} from '../../dialog/edit-category-dialog/edit-category-dialog.component';
+import {CategoryDialogComponent} from '../../dialog/category-dialog/category-dialog.component';
 import {DialogAction} from '../../dialog/DialogResult';
 
 @Component({
@@ -51,7 +51,7 @@ export class CategoriesComponent implements OnInit {
   openAddCategoryDialog() {
     const newCat = new Category(null, '');
     newCat.numberOfWords = 0;
-    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: {
         category: newCat,
         title: 'Create category'
@@ -70,7 +70,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   openEditCategoryDialog(editCat: Category) {
-    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: {
         category: editCat,
         title: 'Edit category'

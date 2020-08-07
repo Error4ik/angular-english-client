@@ -15,7 +15,7 @@ import {CategoryService} from './dao/impl/CategoryService';
 import { CardsComponent } from './view/cards/cards.component';
 import {CardService} from './dao/impl/CardService';
 import {MatDialogModule} from '@angular/material/dialog';
-import { EditCategoryDialogComponent } from './dialog/edit-category-dialog/edit-category-dialog.component';
+import { CategoryDialogComponent } from './dialog/category-dialog/category-dialog.component';
 import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
     CategoriesComponent,
     HeaderComponent,
     CardsComponent,
-    EditCategoryDialogComponent,
+    CategoryDialogComponent,
     ConfirmationDialogComponent
   ],
   imports: [
@@ -40,7 +40,7 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
     MatDialogModule
   ],
   providers: [CategoryService, CardService],
-  entryComponents: [EditCategoryDialogComponent, ConfirmationDialogComponent],
+  entryComponents: [CategoryDialogComponent, ConfirmationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -6,10 +6,10 @@ import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-d
 
 @Component({
   selector: 'app-edit-category-dialog',
-  templateUrl: './edit-category-dialog.component.html',
-  styleUrls: ['./edit-category-dialog.component.scss']
+  templateUrl: './category-dialog.component.html',
+  styleUrls: ['./category-dialog.component.scss']
 })
-export class EditCategoryDialogComponent implements OnInit {
+export class CategoryDialogComponent implements OnInit {
 
   dialogTitle = '';
   category: Category;
@@ -17,7 +17,7 @@ export class EditCategoryDialogComponent implements OnInit {
   canDelete = false;
 
   constructor(
-    private dialogRef: MatDialogRef<EditCategoryDialogComponent>,
+    private dialogRef: MatDialogRef<CategoryDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: { category: Category, title: string },
     private dialog: MatDialog) {
   }
