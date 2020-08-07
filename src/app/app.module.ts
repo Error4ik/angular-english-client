@@ -12,11 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {CategoryService} from './dao/impl/CategoryService';
-import { CardsComponent } from './view/cards/cards.component';
+import {CardsComponent} from './view/cards/cards.component';
 import {CardService} from './dao/impl/CardService';
 import {MatDialogModule} from '@angular/material/dialog';
-import { CategoryDialogComponent } from './dialog/category-dialog/category-dialog.component';
-import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
+import {CategoryDialogComponent} from './dialog/category-dialog/category-dialog.component';
+import {ConfirmationDialogComponent} from './dialog/confirmation-dialog/confirmation-dialog.component';
+import {CardDialogComponent} from './dialog/card-dialog/card-dialog.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
     HeaderComponent,
     CardsComponent,
     CategoryDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CardDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +41,19 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatOptionModule,
+    MatSelectModule
   ],
-  providers: [CategoryService, CardService],
-  entryComponents: [CategoryDialogComponent, ConfirmationDialogComponent],
+  providers: [
+    CategoryService,
+    CardService
+  ],
+  entryComponents: [
+    CategoryDialogComponent,
+    ConfirmationDialogComponent,
+    CardDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

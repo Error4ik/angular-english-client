@@ -36,7 +36,11 @@
       <div class="content">
         <div class="container-fluid text-center">
           <app-cards
-            [cards]="cards">
+            (addCard)="onAddCard($event)"
+
+            [cards]="cards"
+            [selectedCategory]="selectedCategory"
+            [categories]="categories">
           </app-cards>
         </div>
       </div>

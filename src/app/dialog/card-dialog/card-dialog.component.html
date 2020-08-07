@@ -1,0 +1,73 @@
+<mat-dialog-content>
+  <p mat-dialog-title class="text-center">{{dialogTitle}}</p>
+  <div>
+    <mat-form-field>
+      <mat-label>Word (required)</mat-label>
+      <input #inputTitle matInput [(ngModel)]="word">
+      <button *ngIf="word.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+              (click)="word=''" class="clear-button">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Choose category</mat-label>
+      <mat-select [compareWith]="compareObjects" [(ngModel)]="tmpCategory">
+        <mat-option [value]="null">Without category</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Transcription (required)</mat-label>
+      <input matInput [(ngModel)]="transcription">
+      <button *ngIf="transcription.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+              (click)="transcription=''" class="clear-button">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Translation (required)</mat-label>
+      <input matInput [(ngModel)]="translation">
+      <button *ngIf="translation.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+              (click)="translation=''" class="clear-button">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Phrase (required)</mat-label>
+      <input matInput [(ngModel)]="phrase">
+      <button *ngIf="phrase.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+              (click)="phrase=''" class="clear-button">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>TranslatePhrase (required)</mat-label>
+      <input matInput [(ngModel)]="translatePhrase">
+      <button *ngIf="translatePhrase.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+              (click)="translatePhrase=''" class="clear-button">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="col-12">
+    <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="inputTitle.value.trim().length === 0">
+      Save
+    </button>
+    <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+  </div>
+</mat-dialog-actions>

@@ -67,6 +67,11 @@ export class AppComponent implements OnInit {
     console.log('onSearchCategoryByTitle', value);
   }
 
+  onAddCard(card: Card) {
+    this.cardService.add(card);
+    this.updateCards();
+  }
+
   updateCategories() {
     this.categoryService.findAll().subscribe(categories => {
       this.totalWords = 0;

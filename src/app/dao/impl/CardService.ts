@@ -6,8 +6,15 @@ import {Category} from '../../domain/Category';
 
 export class CardService implements CardDao {
 
-  add(item: Card): Observable<Card> {
-    return undefined;
+  add(card: Card): Observable<Card> {
+    card.id = this.getLastCardId().toString();
+    TestData.cards.push(card);
+    TestData.categories.filter(category => {
+      if (category.id === card.category.id) {
+        category.numberOfWords = category.numberOfWords + 1;
+      }
+    });
+    return of(card);
   }
 
   delete(id: string): Observable<Card> {
@@ -15,7 +22,7 @@ export class CardService implements CardDao {
   }
 
   findAll(): Observable<Card[]> {
-    return of(TestData.cards.sort((c1, c2) => c1.id.localeCompare(c2.id)));
+    return of(TestData.cards.sort());
   }
 
   get(id: string): Observable<Card> {
@@ -31,5 +38,9 @@ export class CardService implements CardDao {
       return of(TestData.cards.filter(card => card.category === selectedCategory));
     }
     return this.findAll();
+  }
+
+  private getLastCardId(): string {
+    return Math.max.apply(Math, TestData.cards.map(card => card.id)) + 1;
   }
 }
