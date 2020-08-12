@@ -20,6 +20,7 @@ import {ConfirmationDialogComponent} from './dialog/confirmation-dialog/confirma
 import {CardDialogComponent} from './dialog/card-dialog/card-dialog.component';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatDialogModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
   providers: [
     CategoryService,

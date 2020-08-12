@@ -18,7 +18,7 @@
         (addCategory)="onAddCategory($event)"
         (searchCategory)="onSearchCategoryByTitle($event)"
 
-        [totalWords]="totalWords"
+        [cardsInCategory]="cardsInCategory"
         [selectedCategory]="selectedCategory"
         [categories]="categories">
       </app-categories>
@@ -37,10 +37,13 @@
         <div class="container-fluid text-center">
           <app-cards
             (addCard)="onAddCard($event)"
+            (paging)="paging($event)"
 
             [cards]="cards"
             [selectedCategory]="selectedCategory"
-            [categories]="categories">
+            [categories]="categories"
+            [searchParams]="searchParams"
+            [totalCards]="totalCards">
           </app-cards>
         </div>
       </div>

@@ -3,6 +3,8 @@ import {Category} from './domain/Category';
 import {CategoryService} from './dao/impl/CategoryService';
 import {Card} from './domain/Card';
 import {CardService} from './dao/impl/CardService';
+import {SearchParams} from './dao/search/SearchParams';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +18,10 @@ export class AppComponent implements OnInit {
   menuPosition: string;
   showBackdrop: boolean;
   categories: Category[];
-  totalWords: number;
+  cardsInCategory: number;
+  totalCards: number;
   cards: Card[];
+  searchParams = new SearchParams();
 
   constructor(private categoryService: CategoryService, private cardService: CardService) {
   }
@@ -25,7 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.setMenuValue();
     this.updateCategories();
-    this.updateCards();
+    this.updateCards(this.searchParams);
   }
 
   setMenuValue() {
@@ -45,7 +49,8 @@ export class AppComponent implements OnInit {
 
   onSelectCategory(category: Category) {
     this.selectedCategory = category;
-    this.updateCards();
+    this.searchParams.category = this.selectedCategory != null ? this.selectedCategory.id.toString() : null;
+    this.updateCards(this.searchParams);
   }
 
   onDeleteCategory(category: Category) {
@@ -69,20 +74,36 @@ export class AppComponent implements OnInit {
 
   onAddCard(card: Card) {
     this.cardService.add(card);
-    this.updateCards();
+    this.updateCards(this.searchParams);
   }
 
   updateCategories() {
     this.categoryService.findAll().subscribe(categories => {
-      this.totalWords = 0;
+      this.cardsInCategory = 0;
       this.categories = categories;
       this.categories.forEach(cat => {
-        this.totalWords += cat.numberOfWords;
+        this.cardsInCategory += cat.numberOfWords;
       });
     });
   };
 
-  updateCards() {
-    this.cardService.findCardByCategory(this.selectedCategory).subscribe(cards => this.cards = cards);
+  updateCards(searchParams: SearchParams) {
+    this.cardService.findCardsByCategory(searchParams).subscribe(cards => {
+      this.cards = cards;
+      this.totalCards = cards.length;
+    });
+  }
+
+  paging(pageEvent: PageEvent) {
+    if (this.searchParams.pageLimit !== pageEvent.pageSize) {
+      this.searchParams.pageNumber = 0;
+    } else {
+      this.searchParams.pageNumber = pageEvent.pageIndex;
+    }
+
+    this.searchParams.pageLimit = pageEvent.pageSize;
+    this.searchParams.pageNumber = pageEvent.pageIndex;
+
+    this.updateCards(this.searchParams);
   }
 }

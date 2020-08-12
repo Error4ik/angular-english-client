@@ -15,7 +15,7 @@ export class CategoriesComponent implements OnInit {
   @Input()
   selectedCategory: Category;
   @Input()
-  totalWords: number;
+  cardsInCategory: number;
   @Output()
   selectCategory = new EventEmitter<Category>();
   @Output()

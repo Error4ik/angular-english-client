@@ -4,6 +4,8 @@ import {Category} from '../../domain/Category';
 import {MatDialog} from '@angular/material/dialog';
 import {CardDialogComponent} from '../../dialog/card-dialog/card-dialog.component';
 import {DialogAction} from '../../dialog/DialogResult';
+import {PageEvent} from '@angular/material/paginator';
+import {SearchParams} from '../../dao/search/SearchParams';
 
 @Component({
   selector: 'app-cards',
@@ -18,8 +20,24 @@ export class CardsComponent implements OnInit {
   selectedCategory: Category;
   @Input()
   categories: Category[];
+  @Input()
+  pageNumber: number;
+  @Input()
+  totalCards: number;
+  @Input()
+  pageLimit: number;
+
+  @Input('searchParams')
+  private set setSearchParams(searchParams: SearchParams) {
+    this.searchParams = searchParams;
+  }
+
   @Output()
   addCard = new EventEmitter<Card>();
+  @Output()
+  private paging = new EventEmitter<PageEvent>();
+
+  searchParams: SearchParams;
 
   constructor(private dialog: MatDialog) {
   }
@@ -46,5 +64,9 @@ export class CardsComponent implements OnInit {
         this.addCard.emit(result.object);
       }
     });
+  }
+
+  pageChanged(pageEvent: PageEvent) {
+    this.paging.emit(pageEvent);
   }
 }
