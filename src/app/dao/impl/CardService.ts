@@ -11,7 +11,7 @@ export class CardService implements CardDao {
     TestData.cards.push(card);
     TestData.categories.filter(category => {
       if (category.id === card.category.id) {
-        category.numberOfWords = category.numberOfWords + 1;
+        category.numberOfCards = category.numberOfCards + 1;
       }
     });
     return of(card);

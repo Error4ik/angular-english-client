@@ -28,14 +28,14 @@
           (mouseleave)="showEditIcon(null)"
           (mouseenter)="showEditIcon(index)">
         <a class="nav-link">
-          <span class="category-title">{{category.title}}</span>
+          <span class="category-title">{{category.name}}</span>
           <span class="edit-category-icon-area">
               <mat-icon class="edit-category-icon" *ngIf="indexMouseMove === index"
                         (click)="$event.stopPropagation();  openEditCategoryDialog(category)">
                 edit
               </mat-icon>
             </span>
-          <span class="total-words">{{category.numberOfWords}}</span>
+          <span class="total-words">{{category.numberOfCards}}</span>
         </a>
       </li>
     </ul>

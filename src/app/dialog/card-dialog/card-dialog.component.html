@@ -16,7 +16,7 @@
       <mat-select [compareWith]="compareObjects" [(ngModel)]="tmpCategory">
         <mat-option [value]="null">Without category</mat-option>
         <mat-option *ngFor="let category of categories" [value]="category">
-          {{category.title}}
+          {{category.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>

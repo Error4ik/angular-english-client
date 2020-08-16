@@ -50,7 +50,7 @@ export class CategoriesComponent implements OnInit {
 
   openAddCategoryDialog() {
     const newCat = new Category(null, '');
-    newCat.numberOfWords = 0;
+    newCat.numberOfCards = 0;
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: {
         category: newCat,

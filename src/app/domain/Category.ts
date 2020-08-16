@@ -1,10 +1,10 @@
 export class Category {
   id: string;
-  title: string;
-  numberOfWords?: number;
+  name: string;
+  numberOfCards?: number;
 
   constructor(id: string, title: string) {
     this.id = id;
-    this.title = name;
+    this.name = name;
   }
 }

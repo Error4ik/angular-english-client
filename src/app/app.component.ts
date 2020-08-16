@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
       this.cardsInCategory = 0;
       this.categories = categories;
       this.categories.forEach(cat => {
-        this.cardsInCategory += cat.numberOfWords;
+        this.cardsInCategory += cat.numberOfCards;
       });
     });
   };

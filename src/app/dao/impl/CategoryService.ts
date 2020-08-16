@@ -29,7 +29,7 @@ export class CategoryService implements CategoryDAO {
   }
 
   findAll(): Observable<Category[]> {
-    return of(TestData.categories.sort((c1, c2) => c1.title.localeCompare(c2.title)));
+    return of(TestData.categories.sort((c1, c2) => c1.name.localeCompare(c2.name)));
   }
 
   update(category: Category): Observable<Category> {

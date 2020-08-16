@@ -25,14 +25,14 @@ export class CategoryDialogComponent implements OnInit {
   ngOnInit(): void {
     this.category = this.data.category;
     this.dialogTitle = this.data.title;
-    this.tmpTitle = this.category.title;
+    this.tmpTitle = this.category.name;
     if (this.category.id) {
       this.canDelete = true;
     }
   }
 
   onConfirm(): void {
-    this.category.title = this.tmpTitle;
+    this.category.name = this.tmpTitle;
     this.dialogRef.close(new DialogResult(DialogAction.SAVE, this.category));
   }
 
@@ -48,7 +48,7 @@ export class CategoryDialogComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         dialogTitle: 'Confirm the action.',
-        message: `Are you sure that you want to delete an category? ${this.category.title}`
+        message: `Are you sure that you want to delete an category? ${this.category.name}`
       },
       maxWidth: '300px',
       autoFocus: false
