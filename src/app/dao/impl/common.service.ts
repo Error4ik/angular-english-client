@@ -24,8 +24,4 @@ export class CommonService<T> {
   update(value: T): Observable<T> {
     return this.httpClient.post<T>(this.url + '/update', value);
   }
-
-  findAll(): Observable<T[]> {
-    return this.httpClient.get<T[]>(this.url + '/categories');
-  }
 }
