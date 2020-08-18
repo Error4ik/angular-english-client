@@ -11,9 +11,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {CategoryService} from './dao/impl/CategoryService';
+import {CategoryService} from './dao/impl/categoryService';
 import {CardsComponent} from './view/cards/cards.component';
-import {CardService} from './dao/impl/CardService';
+import {CardService} from './dao/impl/cardService';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CategoryDialogComponent} from './dialog/category-dialog/category-dialog.component';
 import {ConfirmationDialogComponent} from './dialog/confirmation-dialog/confirmation-dialog.component';
@@ -21,6 +21,8 @@ import {CardDialogComponent} from './dialog/card-dialog/card-dialog.component';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {environment} from '../environments/environment';
+import {ENVIRONMENT} from './service/environment.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   ],
   providers: [
     CategoryService,
-    CardService
+    CardService,
+    {
+      provide: ENVIRONMENT,
+      useValue: environment
+    }
   ],
   entryComponents: [
     CategoryDialogComponent,
