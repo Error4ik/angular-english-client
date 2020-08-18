@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from './domain/Category';
-import {CategoryService} from './dao/impl/categoryService';
+import {CategoryService} from './dao/impl/category.service';
 import {Card} from './domain/Card';
-import {CardService} from './dao/impl/cardService';
+import {CardService} from './dao/impl/card.service';
 import {SearchParams} from './dao/search/SearchParams';
 import {PageEvent} from '@angular/material/paginator';
 
