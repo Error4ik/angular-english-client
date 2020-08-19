@@ -13,11 +13,11 @@ export class CommonService<T> {
     return this.httpClient.post<T>(this.url + '/add', item);
   }
 
-  delete(id: string): Observable<T> {
+  delete(id: number): Observable<T> {
     return this.httpClient.delete<T>(this.url + '/delete/' + id);
   }
 
-  get(id: string): Observable<T> {
+  get(id: number): Observable<T> {
     return this.httpClient.get<T>(this.url + '/id/' + id);
   }
 

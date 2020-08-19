@@ -53,23 +53,26 @@ export class AppComponent implements OnInit {
     this.updateCards(this.searchParams);
   }
 
-  onDeleteCategory(category: Category) {
-    this.categoryService.delete(category.id);
-    this.updateCategories();
+  onAddCategory(category: Category) {
+    this.categoryService.add(category).subscribe(() => {
+      this.updateCategories();
+    });
   }
 
   onUpdateCategory(category: Category) {
-    this.categoryService.update(category);
-    this.updateCategories();
+    this.categoryService.update(category).subscribe(() => {
+      this.updateCategories();
+    });
   }
 
-  onAddCategory(category: Category) {
-    this.categoryService.add(category);
-    this.updateCategories();
-  }
-
-  onSearchCategoryByTitle(value: string) {
-    console.log('onSearchCategoryByTitle', value);
+  onDeleteCategory(category: Category) {
+    this.categoryService.delete(category.id).subscribe(() => {
+      if (category === this.selectedCategory) {
+        this.selectedCategory = null;
+        this.onSelectCategory(this.selectedCategory);
+      }
+      this.updateCategories();
+    });
   }
 
   onAddCard(card: Card) {
@@ -82,6 +85,9 @@ export class AppComponent implements OnInit {
       this.cardsInCategory = 0;
       this.categories = categories;
       this.categories.forEach(cat => {
+        if (this.selectedCategory && cat.id === this.selectedCategory.id) {
+          this.selectedCategory = cat;
+        }
         this.cardsInCategory += cat.numberOfCards;
       });
     });

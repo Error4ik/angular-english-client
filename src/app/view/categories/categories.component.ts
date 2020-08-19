@@ -24,8 +24,6 @@ export class CategoriesComponent implements OnInit {
   updateCategory = new EventEmitter<Category>();
   @Output()
   addCategory = new EventEmitter<Category>();
-  @Output()
-  searchCategory = new EventEmitter<string>();
 
   indexMouseMove: number;
 
