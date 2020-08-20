@@ -1,5 +1,5 @@
 export class SearchParams {
-  category: string;
+  category: number;
   pageNumber = 0;
   pageLimit = 10;
 }

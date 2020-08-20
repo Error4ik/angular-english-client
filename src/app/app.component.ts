@@ -94,9 +94,9 @@ export class AppComponent implements OnInit {
   };
 
   updateCards(searchParams: SearchParams) {
-    this.cardService.findCardsByCategory(searchParams).subscribe(cards => {
-      this.cards = cards;
-      this.totalCards = cards.length;
+    this.cardService.findCardsByCategory(searchParams).subscribe((page) => {
+      this.cards = page.content;
+      this.totalCards = page.totalElements;
     });
   }
 

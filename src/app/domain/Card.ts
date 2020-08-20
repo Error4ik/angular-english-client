@@ -1,7 +1,7 @@
 import {Category} from './Category';
 
 export class Card {
-  id: string;
+  id: number;
   word: string;
   category: Category;
   transcription: string;
@@ -10,7 +10,7 @@ export class Card {
   translatePhrase: string;
 
   constructor(
-    id: string,
+    id: number,
     word: string,
     category: Category,
     transcription: string,

@@ -16,11 +16,8 @@ export class CardService extends CommonService<Card> implements CardDao {
     super(environment.getValue('card_url'), httpClient);
   }
 
-  findCardsByCategory(searchParams: SearchParams): Observable<Card[]> {
-    if (searchParams.category) {
-      return this.httpClient.post<Card[]>(this.environment.getValue('card_url') + '/cards', searchParams);
-    }
-    return this.findAll();
+  findCardsByCategory(searchParams: SearchParams): Observable<any> {
+    return this.httpClient.post<Card[]>(this.environment.getValue('card_url') + '/find-cards-by-parameters', searchParams);
   }
 
   findAll(): Observable<Card[]> {
