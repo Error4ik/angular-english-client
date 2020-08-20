@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
 
   onSelectCategory(category: Category) {
     this.selectedCategory = category;
-    this.searchParams.category = this.selectedCategory != null ? this.selectedCategory.id.toString() : null;
+    this.searchParams.category = this.selectedCategory != null ? this.selectedCategory.id : null;
     this.updateCards(this.searchParams);
   }
 
@@ -76,8 +76,9 @@ export class AppComponent implements OnInit {
   }
 
   onAddCard(card: Card) {
-    this.cardService.add(card);
-    this.updateCards(this.searchParams);
+    this.cardService.add(card).subscribe(() => {
+      this.updateCards(this.searchParams);
+    });
   }
 
   updateCategories() {
