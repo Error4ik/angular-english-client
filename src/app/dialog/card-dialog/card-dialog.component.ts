@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Category} from '../../domain/Category';
 import {Card} from '../../domain/Card';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DialogAction, DialogResult} from '../DialogResult';
 
 @Component({
@@ -16,7 +16,6 @@ export class CardDialogComponent implements OnInit {
   card: Card;
 
   word: string;
-  transcription: string;
   translation: string;
   phrase: string;
   translatePhrase: string;
@@ -32,7 +31,6 @@ export class CardDialogComponent implements OnInit {
     this.categories = this.data.categories;
     this.tmpCategory = this.card.category;
     this.word = this.card.word;
-    this.transcription = this.card.transcription;
     this.translation = this.card.translation;
     this.phrase = this.card.phrase;
     this.translatePhrase = this.card.translatePhrase;
@@ -41,7 +39,6 @@ export class CardDialogComponent implements OnInit {
   onConfirm() {
     this.card.word = this.word;
     this.card.category = this.tmpCategory;
-    this.card.transcription = this.transcription;
     this.card.translation = this.translation;
     this.card.phrase = this.phrase;
     this.card.translatePhrase = this.translatePhrase;

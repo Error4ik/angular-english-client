@@ -46,7 +46,7 @@ export class CardsComponent implements OnInit {
   }
 
   openAddCardDialog() {
-    const c = new Card(null, '', this.selectedCategory, '', '', '', '');
+    const c = new Card(null, '', this.selectedCategory, '', '', '');
     const dialogRef = this.dialog.open(CardDialogComponent, {
       data: {
         card: c,

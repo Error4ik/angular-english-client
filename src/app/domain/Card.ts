@@ -4,7 +4,6 @@ export class Card {
   id: number;
   word: string;
   category: Category;
-  transcription: string;
   translation: string;
   phrase: string;
   translatePhrase: string;
@@ -13,7 +12,6 @@ export class Card {
     id: number,
     word: string,
     category: Category,
-    transcription: string,
     translation: string,
     phrase: string,
     translatePhrase: string
@@ -21,7 +19,6 @@ export class Card {
     this.id = id;
     this.word = word;
     this.category = category;
-    this.transcription = transcription;
     this.translation = translation;
     this.phrase = phrase;
     this.translatePhrase = translatePhrase;

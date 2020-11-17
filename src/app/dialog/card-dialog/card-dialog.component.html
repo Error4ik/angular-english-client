@@ -23,16 +23,6 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-label>Transcription (required)</mat-label>
-      <input matInput [(ngModel)]="transcription">
-      <button *ngIf="transcription.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
-              (click)="transcription=''" class="clear-button">
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
       <mat-label>Translation (required)</mat-label>
       <input matInput [(ngModel)]="translation">
       <button *ngIf="translation.trim().length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
