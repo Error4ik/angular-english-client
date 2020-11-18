@@ -78,6 +78,7 @@ export class AppComponent implements OnInit {
   onAddCard(card: Card) {
     this.cardService.add(card).subscribe(() => {
       this.updateCards(this.searchParams);
+      this.updateCategories();
     });
   }
 
