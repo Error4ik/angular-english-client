@@ -99,6 +99,8 @@ export class AppComponent implements OnInit {
     this.cardService.findCardsByCategory(searchParams).subscribe((page) => {
       this.cards = page.content;
       this.totalCards = page.totalElements;
+    }, error => {
+      console.log(error.error)
     });
   }
 
